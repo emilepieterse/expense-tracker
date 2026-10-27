@@ -5,7 +5,8 @@ A simple expense tracker that runs entirely in the browser. Add, edit, and delet
 ## Features
 
 - Add an expense with a description, amount, category, and date
-- Edit or delete any existing expense
+- Edit or delete any existing expense (delete asks for confirmation first)
+- Filter the list by category
 - Running total of all expenses
 - Spending breakdown grouped by category
 - Data is saved in the browser's localStorage, so it persists across reloads
