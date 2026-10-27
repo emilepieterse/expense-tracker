@@ -77,6 +77,38 @@ h1 {
   background: #2458b8;
 }
 
+#cancelBtn {
+  background: #eee;
+  color: #444;
+}
+
+#cancelBtn:hover {
+  background: #ddd;
+}
+
+.hidden {
+  display: none;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.list-header h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.list-header select {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
 .categories {
   display: flex;
   flex-wrap: wrap;

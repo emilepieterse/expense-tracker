@@ -4,9 +4,11 @@ const amountInput = document.getElementById('amount');
 const categoryInput = document.getElementById('category');
 const dateInput = document.getElementById('date');
 const submitBtn = document.getElementById('submitBtn');
+const cancelBtn = document.getElementById('cancelBtn');
 const expenseList = document.getElementById('expenseList');
 const totalAmountEl = document.getElementById('totalAmount');
 const categoryBreakdown = document.getElementById('categoryBreakdown');
+const filterCategory = document.getElementById('filterCategory');
 
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 let editingId = null;
@@ -22,11 +24,16 @@ function formatMoney(value) {
 function render() {
   expenseList.innerHTML = '';
 
-  if (expenses.length === 0) {
+  const activeFilter = filterCategory.value;
+  const visible = activeFilter
+    ? expenses.filter(e => e.category === activeFilter)
+    : expenses;
+
+  if (visible.length === 0) {
     expenseList.innerHTML = '<li class="empty-message">No expenses yet</li>';
   }
 
-  const sorted = [...expenses].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sorted = [...visible].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   sorted.forEach(expense => {
     const li = document.createElement('li');
@@ -85,8 +92,7 @@ form.addEventListener('submit', e => {
     expense.amount = amount;
     expense.category = category;
     expense.date = date;
-    editingId = null;
-    submitBtn.textContent = 'Add Expense';
+    stopEditing();
   } else {
     expenses.push({
       id: Date.now().toString(),
@@ -102,11 +108,18 @@ form.addEventListener('submit', e => {
   form.reset();
 });
 
+function stopEditing() {
+  editingId = null;
+  submitBtn.textContent = 'Add Expense';
+  cancelBtn.classList.add('hidden');
+}
+
 expenseList.addEventListener('click', e => {
   const id = e.target.dataset.id;
   if (!id) return;
 
   if (e.target.classList.contains('delete-btn')) {
+    if (!confirm('Delete this expense?')) return;
     expenses = expenses.filter(expense => expense.id !== id);
     saveExpenses();
     render();
@@ -120,8 +133,16 @@ expenseList.addEventListener('click', e => {
     dateInput.value = expense.date;
     editingId = id;
     submitBtn.textContent = 'Update Expense';
+    cancelBtn.classList.remove('hidden');
     descriptionInput.focus();
   }
 });
+
+cancelBtn.addEventListener('click', () => {
+  stopEditing();
+  form.reset();
+});
+
+filterCategory.addEventListener('change', render);
 
 render();
