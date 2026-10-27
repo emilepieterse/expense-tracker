@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f5f7;
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.summary {
+  margin-bottom: 20px;
+}
+
+.summary-box {
+  background: #2d6cdf;
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-box .label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.summary-box .amount {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#expenseForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#expenseForm input,
+#expenseForm select,
+#expenseForm button {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#expenseForm button {
+  grid-column: span 2;
+  background: #2d6cdf;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#expenseForm button:hover {
+  background: #2458b8;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.category-tag {
+  background: #eef1f6;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+#expenseList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#expenseList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.expense-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-desc {
+  font-weight: bold;
+}
+
+.expense-meta {
+  font-size: 12px;
+  color: #777;
+}
+
+.expense-amount {
+  font-weight: bold;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.expense-actions button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.expense-actions .edit-btn {
+  color: #2d6cdf;
+}
+
+.expense-actions .delete-btn {
+  color: #d9534f;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 20px 0;
+}
