@@ -2,6 +2,8 @@
 
 A simple expense tracker that runs entirely in the browser. Add, edit, and delete expenses, see your total spending, and get a quick breakdown by category.
 
+Live demo: https://expense-tracker-ep.netlify.app
+
 ## Features
 
 - Add an expense with a description, amount, category, and date
