@@ -18,7 +18,7 @@ function saveExpenses() {
 }
 
 function formatMoney(value) {
-  return '$' + value.toFixed(2);
+  return 'R' + value.toFixed(2);
 }
 
 function render() {
